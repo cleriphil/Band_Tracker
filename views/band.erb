@@ -3,7 +3,7 @@
 
 <h5>Where <%= @band.name %> has played</h5>
 <% if @band.venues.any?() %>
-  <ul>
+  <ul class="list-unstyled">
   <% @band.venues.each do |venue| %>
       <li><%= venue.name %> -- <%= venue.city %></li>
   <% end %>

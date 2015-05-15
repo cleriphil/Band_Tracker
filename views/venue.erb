@@ -1,7 +1,7 @@
 <h4>Bands that have played at <%= @venue.name %>:</h4>
 
 <% if @venue.bands.any?() %>
-  <ul>
+  <ul class="list-unstyled">
   <% @venue.bands.each do |band| %>
       <li><%= band.name %> -- <%= band.genre %></li>
   <% end %>

@@ -5,9 +5,12 @@
       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   </head>
   <body>
-    <a href='/'>Home</a>
-    <div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+
+    <div class="page-header text-center"><h1>Band Tracker</h1></div>
       <%= yield %>
-    </div>
+      <div class="footer navbar-fixed-bottom"><a class='btn btn-warning btn-block' href='/' role='button'>Back Home</a>
+</div>
+  </div>
   </body>
 </html>

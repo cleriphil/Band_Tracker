@@ -2,7 +2,7 @@
 
 <% if @bands.any? %>
 
-<ul>
+<ul class="list-unstyled">
   <% @bands.each do |band| %>
   <li><a href='/bands/<%= band.id %>'><%= band.name %></a></li>
   <% end %>
