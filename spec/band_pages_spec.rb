@@ -31,14 +31,11 @@ describe('the path to add and view bands', {:type => :feature}) do
     visit('/')
     click_link('View Venues')
     click_link('Add a Venue')
-    fill_in('name', :with => 'The Cement Theatre')
+    fill_in('name', :with => 'Theatre')
     fill_in('city', :with => 'Denver, CO')
     click_button('Submit')
-
-    visit('/')
-    click_link('View Venues')
     click_link('Add a Venue')
-    fill_in('name', :with => 'The Brick Theatre')
+    fill_in('name', :with => 'Theatre2')
     fill_in('city', :with => 'Springfield, MA')
     click_button('Submit')
 
@@ -49,11 +46,12 @@ describe('the path to add and view bands', {:type => :feature}) do
     fill_in('genre', :with => 'Folk')
     click_button('Submit')
     click_link('Purple')
-    select('The Cement Theatre')
-    select('The Brick Theatre')
-    binding.pry
-    expect(page).to have_content('The Cement Theatre')
-    expect(page).to have_content('The Brick Theatre')
+    select('Theatre')
+    click_button('Submit')
+    select('Theatre2')
+    click_button('Submit')
+    expect(page).to have_content('Theatre')
+    expect(page).to have_content('Theatre2')
 
   end
 

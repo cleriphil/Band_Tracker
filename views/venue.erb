@@ -1,0 +1,11 @@
+<h4>Bands that have played at <%= @venue.name %>:</h4>
+
+<% if @venue.bands.any?() %>
+  <ul>
+  <% @venue.bands.each do |band| %>
+      <li><%= band.name %> -- <%= band.genre %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No bands have played at <%= @venue.name %>, yet.</p>
+<% end %>

@@ -20,8 +20,14 @@ end
 post('/bands') do
   name = params.fetch('name')
   genre = params.fetch('genre')
-  band1 = Band.create({:name => name, :genre => genre})
-  redirect to('/bands')
+  @band = Band.create({:name => name, :genre => genre})
+
+  @for_band = true
+  if @band.save
+    redirect to('/bands')
+  else
+    erb(:errors)
+  end
 end
 
 get('/bands/:band_id') do
@@ -61,6 +67,21 @@ end
 post('/venues') do
   name = params.fetch('name')
   city = params.fetch('city')
-  Venue.create(:name => name, :city => city)
-  redirect to('/venues')
+  @venue = Venue.create(:name => name, :city => city)
+  if @venue.save
+    redirect to('/venues')
+  else
+    erb(:errors)
+  end
+end
+
+get('/venues/:venue_id') do
+  @venue = Venue.find(params.fetch('venue_id'))
+  erb(:venue)
+end
+
+delete('/bands/:band_id') do
+  @band = Band.find(params.fetch('band_id').to_i)
+  @band.delete
+  redirect to('/bands')
 end

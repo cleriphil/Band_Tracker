@@ -1,10 +1,11 @@
 <h3><%= @band.name %></h3>
 <h4>Genre: <%= @band.genre %></h4>
 
+<h5>Where <%= @band.name %> has played</h5>
 <% if @band.venues.any?() %>
   <ul>
   <% @band.venues.each do |venue| %>
-      <li><%= venue.name %></li>
+      <li><%= venue.name %> -- <%= venue.city %></li>
   <% end %>
   </ul>
 <% else %>
@@ -41,4 +42,9 @@
   <input id='genre' name='genre' type='text' value='<%= @band.genre %>'>
 
   <button class='btn-default'>Submit</button>
+</form>
+
+<form action='/bands/<%= @band.id %>' method='post'>
+  <input name='_method' type='hidden' value='delete'>
+  <button id='delete_band' class='btn-danger'>Delete Band</button>
 </form>

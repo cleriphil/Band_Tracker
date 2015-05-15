@@ -6,9 +6,9 @@ describe('path to add and view venues', {:type => :feature}) do
     visit('/')
     click_link('View Venues')
     click_link('Add a Venue')
-    fill_in('name', :with => 'The Cement Theatre')
+    fill_in('name', :with => 'the cement theatre')
     fill_in('city', :with => 'Denver, CO')
     click_button('Submit')
-    expect(page).to have_content('The Cement Theatre')
+    expect(page).to have_content('The cement theatre')
   end
 end

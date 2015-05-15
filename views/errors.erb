@@ -1,0 +1,17 @@
+<h3>Oops there were some errors:</h3>
+<% if @for_band %>
+<ul>
+  <% @band.errors().full_messages().each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<h5><a href='/' > Return to main page to try again</a></h5>
+
+<% else %>
+<ul>
+  <% @venue.errors().full_messages().each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<h5><a href='/' > Return to main page to try again</a></h5>
+<% end %>
