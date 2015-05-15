@@ -1,0 +1,29 @@
+<h3><%= @band.name %></h3>
+
+<% if @band.venues.any?() %>
+  <ul>
+  <% @band.venues.each do |venue| %>
+      <li><%= venue.name %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p><%= @band.name %> hasn't played in any venues yet...that we know of.</p>
+<% end %>
+
+
+
+<h5>Choose some venues...</h5>
+  <form action='/bands/<%= @band.id %>' method='post'>
+
+  <select  name='venues[]' multiple='multiple' size='10'>
+
+    <% @venues.each do |venue| %>
+        <option value='<%= venue.id %>'><%= venue.name %></option>
+      <% end %>
+  </select>
+
+  <input type='submit'/>
+  <!-- <button class='btn-default'>Submit</button -->
+
+
+  </form>

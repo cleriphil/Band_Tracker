@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515163714) do
+ActiveRecord::Schema.define(version: 20150515165650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 20150515163714) do
 
   create_table "bands_venues", id: false, force: :cascade do |t|
     t.integer "band_id"
-    t.integer "recipe_id"
+    t.integer "venue_id"
   end
 
   add_index "bands_venues", ["band_id"], name: "index_bands_venues_on_band_id", using: :btree
-  add_index "bands_venues", ["recipe_id"], name: "index_bands_venues_on_recipe_id", using: :btree
+  add_index "bands_venues", ["venue_id"], name: "index_bands_venues_on_venue_id", using: :btree
 
   create_table "venues", force: :cascade do |t|
     t.string   "name"
