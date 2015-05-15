@@ -1,4 +1,5 @@
 <h3><%= @band.name %></h3>
+<h4>Genre: <%= @band.genre %></h4>
 
 <% if @band.venues.any?() %>
   <ul>
@@ -12,18 +13,32 @@
 
 
 
-<h5>Choose some venues...</h5>
   <form action='/bands/<%= @band.id %>' method='post'>
 
-  <select  name='venues[]' multiple='multiple' size='10'>
+
+  <label for='venue'>Choose some venues:</label>
+  <select id='venue' name='venue' type='text'>
 
     <% @venues.each do |venue| %>
         <option value='<%= venue.id %>'><%= venue.name %></option>
       <% end %>
   </select>
 
-  <input type='submit'/>
+  <input type='submit' />
   <!-- <button class='btn-default'>Submit</button -->
-
-
   </form>
+
+
+
+<h5>Edit the band's info:</h5>
+<form action='/bands/<%= @band.id %>' method='post'>
+  <input name='_method' type='hidden' value='patch'>
+
+  <label for='name'>New Name:</label>
+  <input id='name' name='name' type='text' value='<%= @band.name %>'>
+
+  <label for='genre'>New Genre:</label>
+  <input id='genre' name='genre' type='text' value='<%= @band.genre %>'>
+
+  <button class='btn-default'>Submit</button>
+</form>

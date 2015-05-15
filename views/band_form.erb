@@ -7,23 +7,5 @@
   <label for='genre'>Genre:</label>
   <input id='genre' name='genre' type='text'>
 
-
-
-
-  <label for='venues'>Choose Venues:</label>
-  <select multiple name='venues[]'>
-
-    <% @venues.each do |venue| %>
-        <option value='<%= venue.id %>'><%= venue.name %></option>
-      <% end %>
-  </select>
-
-
-
-
-
-
-
-
   <button class='btn-default'>Submit</button
 </form>

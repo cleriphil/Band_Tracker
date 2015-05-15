@@ -32,17 +32,21 @@ end
 
 post('/bands/:band_id') do
   @band = Band.find(params.fetch('band_id').to_i)
-
-  venue_ids = params[:venues]
-  venues = []
-  venue_ids.each() do |venue_id|
-    new_venue = Venue.find(venue_id)
-    venues.push(new_venue)
+  venue_id = params.fetch('venue').to_i
+  @venue = Venue.find(venue_id)
+  if @band.venues.include?(@venue).!
+    @band.venues.push([@venue])
   end
+  redirect to("/bands/#{@band.id}")
+end
 
-
-  @band.venues.push(venues)
-
+patch('/bands/:band_id') do
+  @band = Band.find(params.fetch('band_id').to_i)
+  name = params.fetch('name')
+  genre = params.fetch('genre')
+  @band.update({:name => name})
+  @band.update({:genre => genre})
+  redirect to("/bands/#{@band.id}")
 end
 
 get('/venues') do
